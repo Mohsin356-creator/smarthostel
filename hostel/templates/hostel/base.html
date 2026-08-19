@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}SmartHostel{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div style="display: flex;">
+
+        <div style="width: 220px; min-height: 100vh; background: #1e293b; padding: 20px; color: white;">
+            <h4 style="margin-bottom: 20px;">🏢 SmartHostel</h4>
+
+            <div style="margin-bottom: 20px;">
+                <select onchange="window.location.href='/switch-hostel/' + this.value + '/'" style="width: 100%; padding: 6px; border-radius: 4px; border: none;">
+                    {% for h in all_hostels %}
+                    <option value="{{ h.pk }}" {% if h.pk == active_hostel.pk %}selected{% endif %}>{{ h.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <a href="/" style="display:block; color:white; padding:8px 0; text-decoration:none;">Dashboard</a>
+            <a href="/students/" style="display:block; color:white; padding:8px 0; text-decoration:none;">Students</a>
+            <a href="/rooms/" style="display:block; color:white; padding:8px 0; text-decoration:none;">Rooms</a>
+            <a href="/fees/" style="display:block; color:white; padding:8px 0; text-decoration:none;">Fees</a>
+            <a href="/expenses/" style="display:block; color:white; padding:8px 0; text-decoration:none;">Expenses</a>
+
+            <hr style="border-color: #475569;">
+            <form method="POST" action="/logout/">
+                {% csrf_token %}
+                <button type="submit" style="background:none; border:none; color:white; padding:8px 0;">Logout</button>
+            </form>
+        </div>
+
+        <div style="flex: 1; padding: 30px; background: #f5f5f5; min-height: 100vh;">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+    </div>
+</body>
+</html>

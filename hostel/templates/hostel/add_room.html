@@ -1,0 +1,14 @@
+{% extends 'hostel/base.html' %}
+
+{% block title %}Add Room - SmartHostel{% endblock %}
+
+{% block content %}
+<h1>Add New Room</h1>
+<a href="/rooms/">← Back to Rooms</a>
+
+<form method="POST" class="bg-white p-4 rounded mt-3" style="max-width: 500px;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-dark">Save Room</button>
+</form>
+{% endblock %}

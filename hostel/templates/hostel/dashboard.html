@@ -1,0 +1,39 @@
+{% extends 'hostel/base.html' %}
+
+{% block title %}Dashboard - SmartHostel{% endblock %}
+
+{% block content %}
+<h1>Royal Group Of Hostels — Dashboard</h1>
+
+<div style="display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap;">
+    <div class="card" style="padding: 20px; width: 200px;">
+        <p style="color: #888; margin: 0;">Active Students</p>
+        <h2 style="margin: 5px 0;">{{ total_students }}</h2>
+    </div>
+
+    <div class="card" style="padding: 20px; width: 200px;">
+        <p style="color: #888; margin: 0;">Total Rooms</p>
+        <h2 style="margin: 5px 0;">{{ total_rooms }}</h2>
+    </div>
+
+    <div class="card" style="padding: 20px; width: 200px;">
+        <p style="color: #888; margin: 0;">Pending Fees</p>
+        <h2 style="margin: 5px 0;">{{ pending_fees }}</h2>
+    </div>
+
+    <div class="card" style="padding: 20px; width: 200px; background: #d1fae5;">
+        <p style="color: #065f46; margin: 0;">Total Revenue</p>
+        <h2 style="margin: 5px 0; color: #065f46;">{{ total_revenue }}</h2>
+    </div>
+
+    <div class="card" style="padding: 20px; width: 200px; background: #fee2e2;">
+        <p style="color: #991b1b; margin: 0;">Total Expenses</p>
+        <h2 style="margin: 5px 0; color: #991b1b;">{{ total_expenses }}</h2>
+    </div>
+
+    <div class="card" style="padding: 20px; width: 200px; background: #dbeafe;">
+        <p style="color: #1e3a8a; margin: 0;">Net Profit</p>
+        <h2 style="margin: 5px 0; color: #1e3a8a;">{{ net_profit }}</h2>
+    </div>
+</div>
+{% endblock %}

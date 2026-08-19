@@ -1,0 +1,30 @@
+{% extends 'hostel/base.html' %}
+
+{% block title %}Expenses - SmartHostel{% endblock %}
+
+{% block content %}
+<h1>Expenses</h1>
+<p><a href="/expenses/add/" class="btn btn-dark btn-sm">+ Add New Expense</a></p>
+
+<table class="table table-bordered bg-white">
+    <tr class="table-light">
+        <th>Category</th>
+        <th>Description</th>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Actions</th>
+    </tr>
+    {% for expense in expenses %}
+    <tr>
+        <td>{{ expense.category }}</td>
+        <td>{{ expense.description }}</td>
+        <td>{{ expense.amount }}</td>
+        <td>{{ expense.expense_date }}</td>
+        <td>
+            <a href="/expenses/edit/{{ expense.pk }}/" class="btn btn-sm btn-outline-primary">Edit</a>
+            <a href="/expenses/delete/{{ expense.pk }}/" class="btn btn-sm btn-outline-danger">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

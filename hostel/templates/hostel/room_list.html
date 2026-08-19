@@ -1,0 +1,32 @@
+{% extends 'hostel/base.html' %}
+
+{% block title %}Rooms - SmartHostel{% endblock %}
+
+{% block content %}
+<h1>Rooms</h1>
+<p><a href="/rooms/add/" class="btn btn-dark btn-sm">+ Add New Room</a></p>
+
+<table class="table table-bordered bg-white">
+    <tr class="table-light">
+        <th>Room Number</th>
+        <th>Floor</th>
+        <th>Total Beds</th>
+        <th>Monthly Rent</th>
+        <th>Students</th>
+        <th>Actions</th>
+    </tr>
+    {% for room in rooms %}
+    <tr>
+        <td>{{ room.room_number }}</td>
+        <td>{{ room.floor }}</td>
+        <td>{{ room.total_beds }}</td>
+        <td>{{ room.monthly_rent }}</td>
+        <td>{{ room.students.count }}</td>
+        <td>
+            <a href="/rooms/edit/{{ room.pk }}/" class="btn btn-sm btn-outline-primary">Edit</a>
+            <a href="/rooms/delete/{{ room.pk }}/" class="btn btn-sm btn-outline-danger">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

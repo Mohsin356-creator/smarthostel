@@ -1,0 +1,34 @@
+{% extends 'hostel/base.html' %}
+
+{% block title %}Fees - SmartHostel{% endblock %}
+
+{% block content %}
+<h1>Fees</h1>
+<p><a href="/fees/add/" class="btn btn-dark btn-sm">+ Add New Fee</a></p>
+
+<table class="table table-bordered bg-white">
+    <tr class="table-light">
+        <th>Student</th>
+        <th>Month</th>
+        <th>Monthly Fee</th>
+        <th>Paid</th>
+        <th>Remaining</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    {% for fee in fees %}
+    <tr>
+        <td>{{ fee.student.full_name }}</td>
+        <td>{{ fee.fee_month }}</td>
+        <td>{{ fee.monthly_fee }}</td>
+        <td>{{ fee.paid_amount }}</td>
+        <td>{{ fee.remaining_amount }}</td>
+        <td>{{ fee.status }}</td>
+        <td>
+            <a href="/fees/edit/{{ fee.pk }}/" class="btn btn-sm btn-outline-primary">Edit</a>
+            <a href="/fees/delete/{{ fee.pk }}/" class="btn btn-sm btn-outline-danger">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
